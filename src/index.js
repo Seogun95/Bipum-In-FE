@@ -12,6 +12,11 @@ import router from 'router/router';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 
+import ReactGA from 'react-ga';
+
+const TRACKING_ID = process.env.REACT_APP_GOOGLE_ANALYTICS_TRACKING_ID; // 발급받은 추적ID를 환경 변수로 불러온다.
+ReactGA.initialize(TRACKING_ID);
+
 if (process.env.NODE_ENV === 'production') {
   Sentry.init({
     dsn: process.env.REACT_APP_SENTRY_DSN,
@@ -28,5 +33,5 @@ root.render(
       <GlobalStyle />
       <RouterProvider router={router} />
     </ThemeProvider>
-  </Provider>
+  </Provider>,
 );

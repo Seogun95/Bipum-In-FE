@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import ChannelTalkBtn from './components/common/ChannelTalkBtn';
+import RouteChangeTracker from './utils/RouteChangeTracker';
 
 export default function App() {
   const [badgeCount, setBadgeCount] = useState(0);
@@ -18,6 +19,7 @@ export default function App() {
     };
   }, []);
 
+  RouteChangeTracker();
   return (
     <Wrapper>
       <ChannelTalkBtn badgeCount={badgeCount} />
